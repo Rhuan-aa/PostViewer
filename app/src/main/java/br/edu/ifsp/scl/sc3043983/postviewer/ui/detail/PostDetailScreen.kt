@@ -20,6 +20,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -45,7 +46,15 @@ fun PostDetailScreen(
     }
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Comentários do post #$postId") }) }
+        topBar = {
+            TopAppBar(
+                title = { Text("Comentários do post #$postId") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            )
+        }
     ) { innerPadding ->
         Column(
             modifier = Modifier
