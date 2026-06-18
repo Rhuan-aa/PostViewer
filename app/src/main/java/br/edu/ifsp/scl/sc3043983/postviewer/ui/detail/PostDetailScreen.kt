@@ -2,15 +2,19 @@ package br.edu.ifsp.scl.sc3043983.postviewer.ui.detail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,7 +27,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import br.edu.ifsp.scl.sc3043983.postviewer.data.remote.model.Comment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,19 +75,36 @@ private fun ErrorContent(
 }
 
 @Composable
-private fun CommentList(comments: List<Comment>) {
+private fun CommentList(comments: List<CommentUi>) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(comments, key = { it.id }) { comment ->
             Column(modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(16.dp)
             ) {
-                Text(text = comment.name, style = MaterialTheme.typography.titleMedium)
-                Text(text = comment.email, style = MaterialTheme.typography.bodySmall)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = comment.author,
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    if (comment.isLocal) {
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "local",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(text = comment.body, style = MaterialTheme.typography.bodyMedium)
+                Text(
+                    text = comment.body,
+                    style = MaterialTheme.typography.bodyMedium
+                )
             }
+            HorizontalDivider()
         }
     }
 }
+
 
