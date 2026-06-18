@@ -7,10 +7,7 @@ comentários locais persistidos no dispositivo.
 ## Identificação
 
 - **Aluno:** Rhuan Andrey de Andrade Boni
-- **Prontuário:** sc3043983
 - **Disciplina:** Programação para Dispositivos Móveis
-- **Instituição:** Instituto Federal de São Paulo (IFSP)
-- **Professor:** Pedro Northon Nobile
 
 ## Descrição e requisitos
 
@@ -106,9 +103,3 @@ O projeto usa o **Kotlin embutido do AGP 9**, que desabilita o DSL
 `kotlin.sourceSets` usado pelo KSP para registrar o código gerado. Por isso, o
 arquivo `gradle.properties` define `android.disallowKotlinSourceSets=false`,
 conforme recomendado pela documentação de ferramentas do Android.
-
-## Capturas de tela
-
-| Lista de posts | Comentários (API) | Comentário local |
-|---|---|---|
-| ![Lista de posts](docs/01-lista-posts.png) | ![Comentários da API](docs/02-comentarios-api.png) | ![Comentário local](docs/03-comentario-local.png) |
