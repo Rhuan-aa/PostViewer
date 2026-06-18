@@ -53,4 +53,10 @@ class PostDetailViewModel(application: Application) : AndroidViewModel(applicati
             }
         }
     }
+
+    fun addComment(postId: Int, body: String) {
+        viewModelScope.launch {
+            repository.addLocalComment(postId, body)
+        }
+    }
 }

@@ -14,4 +14,7 @@ class CommentRepository(
 
     fun getLocalComments(postId: Int): Flow<List<LocalCommentEntity>> =
         localCommentDao.getByPost(postId)
+
+    suspend fun addLocalComment(postId: Int, body: String) =
+        localCommentDao.insert(LocalCommentEntity(postId = postId, body = body))
 }
